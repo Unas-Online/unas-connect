@@ -21,6 +21,7 @@ class Client
     protected array $allowedIps = [];
     protected int $curlTimeout;
     protected int $curlConnectTimeout;
+    protected string $userAgent;
 
     /**
      * @param array<string,mixed> {
@@ -44,6 +45,7 @@ class Client
         $this->curlTimeout = Arrays::get($config, 'timeout', 120);
         $this->curlConnectTimeout = Arrays::get($config, 'connectTimeout', 120);
         $this->apiUrl = Arrays::get($config, 'apiUrl', 'https://api.unas.eu/shop/');
+        $this->userAgent = Arrays::get($config, 'userAgent', 'UnasConnect');
 
         if (!is_null($cache)) {
             $this->cache = $cache;
@@ -106,7 +108,7 @@ class Client
             CURLOPT_HEADER => false,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_ENCODING => '',
-            CURLOPT_USERAGENT => 'UnasConnect',
+            CURLOPT_USERAGENT => $this->userAgent,
             CURLOPT_AUTOREFERER => true,
             CURLOPT_CONNECTTIMEOUT => $this->curlConnectTimeout,
             CURLOPT_TIMEOUT => $this->curlTimeout,
