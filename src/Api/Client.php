@@ -29,6 +29,7 @@ class Client
      *     apiUrl:         string (default "https://api.unas.eu/shop/")
      *     timeout:        int    (default 120)
      *     connectTimeout: int    (default 120)
+     *     userAgent:      string (default "UnasConnect")
      * } $config
      * @param ClientCacheInterface $cache
      *
