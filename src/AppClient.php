@@ -24,9 +24,9 @@ class AppClient
      * @param string $time
      * @param string $token
      * @param string $hmac
-     * @return true|string true if request is verified, error message on fail
+     * @return bool|string true if request is verified, error message on fail
      */
-    public function verifyRequest(string $shop_id, string $time, string $token, string $hmac): true|string
+    public function verifyRequest(string $shop_id, string $time, string $token, string $hmac): bool|string
     {
         if (empty(trim($hmac))) {
             return 'empty hmac';
